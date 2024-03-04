@@ -5,8 +5,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ILogin } from "@/types/auth";
 import userLoginSchema from "@/schema/login.schema";
 import Button from "../ui/Button";
+import Link from "next/link";
+import { useAppDispatch } from "@/Redux/hooks";
+import { changeAuthState } from "@/Redux/Slices/authSlice";
 
 const LoginForm: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
@@ -14,10 +19,10 @@ const LoginForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(userLoginSchema),
   });
-  const onSubmit = (data: ILogin): void => console.log(data);  
+  const onSubmit = (data: ILogin): void => console.log(data);
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+    <div className=" w-full mx-auto mt-8 lg:p-6 p-9 bg-white rounded-md shadow-md shadow-sky-300">
       <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-center">Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-4">
@@ -33,7 +38,7 @@ const LoginForm: React.FC = () => {
             id="email"
             placeholder="email"
             name="email"
-            className={`mt-1 p-2 w-full border rounded-md ${errors.email?.message && "border-red-500 outline-none border-1"}`}
+            className={`mt-1 p-2 w-full border rounded-md  outline-none ${errors.email?.message && "border-red-500  border-1"}`}
           />
           <p className="text-red-500">{errors.email?.message}</p>
         </div>
@@ -50,14 +55,30 @@ const LoginForm: React.FC = () => {
             id="password"
             name="password"
             placeholder="password"
-            className={`mt-1 p-2 w-full border rounded-md    ${errors.password?.message && "border-red-500 outline-none border-1"}`}
+            className={`mt-1 p-2 w-full border rounded-md outline-none   ${errors.password?.message && "border-red-500  border-1"}`}
           />
           <p className="text-red-500">{errors.password?.message}</p>
         </div>
         <div className="mt-6 w-full">
-          <Button type="submit">login</Button>
+          <Button>login</Button>
         </div>
       </form>
+      <div className="flex justify-center mt-8">
+        <Link href="/forgotten-password" className="text-sky-500">
+          {" "}
+          Forgotten Password?
+        </Link>
+      </div>
+      <hr className="my-4  " />
+
+      <div className="flex justify-center ">
+        <button
+          onClick={() => dispatch(changeAuthState())}
+          className="text-sm px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-sky-600 transition-colors duration-300 "
+        >
+          Create New Account
+        </button>
+      </div>
     </div>
   );
 };

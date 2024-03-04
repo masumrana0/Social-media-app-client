@@ -45,8 +45,10 @@ const RegisterForm: React.FC = () => {
   const onSubmit = (data: IUser): void => console.log(data);
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-      <h2 className="text-2xl font-semibold mb-6">Sign Up</h2>
+    <div className="max-w-md mx-auto mt-8 lg:p-6 p-10 bg-white rounded-md shadow-lg shadow-sky-200 ">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-center">
+        Sign Up
+      </h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-2 gap-4">
