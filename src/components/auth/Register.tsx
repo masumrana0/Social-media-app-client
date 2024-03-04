@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import userSignupSchema from "@/schema/register.schema";
 import { IUser } from "@/types/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Button from "../ui/Button";
 
 const RegisterForm: React.FC = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -42,8 +43,6 @@ const RegisterForm: React.FC = () => {
   };
 
   const onSubmit = (data: IUser): void => console.log(data);
-
-  // const handleSubmit = (data: FormData) => {};
 
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
@@ -265,13 +264,8 @@ const RegisterForm: React.FC = () => {
           <p className="text-red-500 ms-2">{errors.gender?.message}</p>
         </div>
 
-        <div className="mt-6">
-          <button
-            type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Sign Up
-          </button>
+        <div className="mt-6 w-full">
+          <Button>Sign Up</Button>
         </div>
       </form>
     </div>

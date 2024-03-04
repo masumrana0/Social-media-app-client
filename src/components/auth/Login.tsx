@@ -14,11 +14,11 @@ const LoginForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(userLoginSchema),
   });
-  const onSubmit = (data: ILogin): void => console.log(data);
+  const onSubmit = (data: ILogin): void => console.log(data);  
 
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-      <h2 className="text-2xl font-semibold mb-6">Login</h2>
+      <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-center">Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-4">
           <label
@@ -33,7 +33,7 @@ const LoginForm: React.FC = () => {
             id="email"
             placeholder="email"
             name="email"
-            className={`mt-1 p-2 w-full border rounded-md     ${errors.email?.message && "border-red-500 outline-none border-1"}`}
+            className={`mt-1 p-2 w-full border rounded-md ${errors.email?.message && "border-red-500 outline-none border-1"}`}
           />
           <p className="text-red-500">{errors.email?.message}</p>
         </div>
@@ -55,7 +55,7 @@ const LoginForm: React.FC = () => {
           <p className="text-red-500">{errors.password?.message}</p>
         </div>
         <div className="mt-6 w-full">
-          <Button>login</Button>
+          <Button type="submit">login</Button>
         </div>
       </form>
     </div>
