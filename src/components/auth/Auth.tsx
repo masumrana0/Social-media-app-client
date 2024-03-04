@@ -1,3 +1,4 @@
+import LoginForm from "./Login";
 import RegisterForm from "./Register";
 import Register from "./Register";
 
@@ -6,7 +7,8 @@ const Auth = () => {
     <div>
       <h3>This is auth page</h3>
 
-      <RegisterForm />
+      <LoginForm />
+      {/* <RegisterForm /> */}
     </div>
   );
 };

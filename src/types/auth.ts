@@ -10,3 +10,8 @@ export interface IUser {
   year?: Date | null;
   dateOfBirth?: Date;
 }
+
+export interface ILogin {
+  email: string;
+  password: string;
+}
