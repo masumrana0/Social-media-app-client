@@ -9,6 +9,8 @@ export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
 
 export const isLoggedIn = () => {
   const authToken = getFromLocalStorage(authKey);
+  // console.log(authToken);
+  
   return !!authToken;
 };
 

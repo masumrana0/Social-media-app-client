@@ -1,10 +1,23 @@
+"use client";
+import { useEffect, useState } from "react";
 import Auth from "@/components/auth/Auth";
 import { isLoggedIn } from "@/service/auth.service";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 const HomePage = () => {
-  const isLogged = isLoggedIn();
+  // const [isLogged, setIsLogged] = useState(false);
 
-  return <div>{isLogged ? <h3>This is home page</h3> : <Auth />}</div>;
+  // useEffect(() => {
+  //   setIsLogged(isLoggedIn());
+  // }, []);
+
+  return (
+    <div className="flex">
+      {" "}
+      <h3>This is home page</h3>
+      <LoadingSpinner type="regular" />
+    </div>
+  );
 };
 
 export default HomePage;

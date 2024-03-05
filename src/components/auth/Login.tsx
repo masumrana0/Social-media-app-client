@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ILogin } from "@/types/auth";
@@ -8,10 +9,14 @@ import Button from "../ui/Button";
 import Link from "next/link";
 import { useAppDispatch } from "@/Redux/hooks";
 import { changeAuthState } from "@/Redux/Slices/authSlice";
+import { useLoginMutation } from "@/Redux/api/authApi";
+import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
+import { authKey } from "@/constants/storegeKey";
+import { useRouter } from "next/navigation";
+import LoadingSpinner from "../ui/LoadingSpinner";
 
 const LoginForm: React.FC = () => {
-  const dispatch = useAppDispatch();
-
+  // form handler
   const {
     register,
     handleSubmit,
@@ -19,7 +24,19 @@ const LoginForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(userLoginSchema),
   });
-  const onSubmit = (data: ILogin): void => console.log(data);
+
+  // redux
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const [setLogin, { isLoading }] = useLoginMutation();
+
+  const onSubmit = async (data: ILogin) => {
+    const res = await setLogin(data).unwrap();
+    if (res.accessToken) {
+      setToLocalStorage(authKey, res?.accessToken);
+      router.push("/");
+    }
+  };
 
   return (
     <div className=" w-full mx-auto mt-8 lg:p-6 p-9 bg-white rounded-md shadow-md shadow-sky-300">
@@ -60,7 +77,9 @@ const LoginForm: React.FC = () => {
           <p className="text-red-500">{errors.password?.message}</p>
         </div>
         <div className="mt-6 w-full">
-          <Button>login</Button>
+          <div className="mt-6 w-full">
+            <Button>login</Button>
+          </div>
         </div>
       </form>
       <div className="flex justify-center mt-8">

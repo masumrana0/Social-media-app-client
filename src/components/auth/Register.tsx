@@ -8,30 +8,16 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Button from "../ui/Button";
 
 const RegisterForm: React.FC = () => {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
-    useState(false);
   // React Form hook handler
   const {
     register,
-    handleSubmit,
+    handleSubmit,  
     formState: { errors },
   } = useForm({ resolver: yupResolver(userSignupSchema) });
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false);
 
   const generateYears = () => {
     const currentYear = new Date().getFullYear();
@@ -42,7 +28,11 @@ const RegisterForm: React.FC = () => {
     return years;
   };
 
-  const onSubmit = (data: IUser): void => console.log(data);
+  const onSubmit = (data: any): void => {
+    console.log("hello");
+
+    console.log(data);
+  };
 
   return (
     <div className="max-w-md mx-auto mt-8 lg:p-6 p-10 bg-white rounded-md shadow-lg shadow-sky-200 ">
@@ -54,7 +44,7 @@ const RegisterForm: React.FC = () => {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label
-              htmlFor="firstName"
+              htmlFor="name.firstName"
               className="block text-sm font-medium text-gray-600"
             >
               First Name
@@ -62,10 +52,8 @@ const RegisterForm: React.FC = () => {
             <input
               {...register("name.firstName")}
               type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
+              id="name.firstName"
+              name="name.firstName"
               className="mt-1 p-2 w-full border rounded-md"
             />
             <p className="text-red-500 ms-2">
@@ -74,7 +62,7 @@ const RegisterForm: React.FC = () => {
           </div>
           <div>
             <label
-              htmlFor="lastName"
+              htmlFor="name.lastName"
               className="block text-sm font-medium text-gray-600"
             >
               Last Name
@@ -82,16 +70,13 @@ const RegisterForm: React.FC = () => {
             <input
               {...register("name.lastName")}
               type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
+              id="name.lastName"
+              name="name.lastName"
               className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
         </div>
-
-        <div className="mt-4">
+        <div className="mt-2">
           <label
             htmlFor="email"
             className="block text-sm font-medium text-gray-600"
@@ -103,14 +88,11 @@ const RegisterForm: React.FC = () => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
             className="mt-1 p-2 w-full border rounded-md"
           />
           <p className="text-red-500 ms-2">{errors.email?.message}</p>
         </div>
-
-        <div className="mt-4">
+        <div className="mt-2">
           <label
             htmlFor="password"
             className="block text-sm font-medium text-gray-600"
@@ -123,8 +105,6 @@ const RegisterForm: React.FC = () => {
               id="password"
               type={isPasswordVisible ? "text" : "password"}
               name="password"
-              value={formData.password}
-              onChange={handleChange}
               className="mt-1 p-2 w-full outline-none "
             />
             <button
@@ -136,8 +116,7 @@ const RegisterForm: React.FC = () => {
           </div>
           <p className="text-red-500 ms-2">{errors.password?.message}</p>
         </div>
-
-        <div className="mt-4">
+        <div className="mt-2">
           <label
             htmlFor="confirmPassword"
             className="block text-sm font-medium text-gray-600"
@@ -163,9 +142,8 @@ const RegisterForm: React.FC = () => {
           </div>
           <p className="text-red-500 ms-2">{errors.confirmPassword?.message}</p>
         </div>
-
         {/* date of birth */}
-        <div className="grid grid-cols-3 gap-4 mt-4">
+        <div className="grid grid-cols-3 gap-4 mt-2">
           <div>
             <label
               htmlFor="day"
@@ -242,8 +220,7 @@ const RegisterForm: React.FC = () => {
           </div>
         </div>
         <p className="text-red-500 ms-2 ">{errors.year?.message}</p>
-
-        <div className="mt-4">
+        <div className="mt-2">
           <label
             htmlFor="gender"
             className="block text-sm font-medium text-gray-600"
@@ -264,8 +241,8 @@ const RegisterForm: React.FC = () => {
             <option value="female">Female</option>
           </select>
           <p className="text-red-500 ms-2">{errors.gender?.message}</p>
-        </div>
-
+        </div>{" "}
+        *
         <div className="mt-6 w-full">
           <Button>Sign Up</Button>
         </div>
