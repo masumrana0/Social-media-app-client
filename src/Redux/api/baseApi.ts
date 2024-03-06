@@ -9,7 +9,6 @@ import type { Action, PayloadAction } from "@reduxjs/toolkit";
 import { axiosBaseQuery } from "@/helpers/axios/axiosBaseQuery";
 import { getBaseUrl } from "@/helpers/config/envConfig";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { HYDRATE } from "next-redux-wrapper";
 
 export const baseApi = createApi({
   reducerPath: "api",
@@ -23,5 +22,6 @@ export const baseApi = createApi({
     "comment_reply",
     "reaction",
     "story",
+    "conversation",
   ],
 });

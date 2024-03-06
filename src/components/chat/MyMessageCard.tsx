@@ -4,7 +4,7 @@ import img from "/public/assests/profile.jpg";
 
 const MyMessageCard = () => {
   return (
-    <div className="flex gap-3 float-end ">
+    <div className="flex gap-3 float-end mb-10 ">
       <div className="text-sm">
         <h4 className=" bg-gray-300 p-5 rounded-l-lg rounded-b-lg mb-3 ">
           Hi I am Josephin, can you help me to find best chat app?. 😀

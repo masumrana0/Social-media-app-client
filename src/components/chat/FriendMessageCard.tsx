@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const FriendMessageCard = () => {
   return (
-    <div className="flex gap-3 ">
+    <div className="flex gap-3 mb-10 ">
       <div className="w-[40px] h-[40px]  rounded-lg overflow-hidden">
         <Image
           className="w-full h-full object-cover  "

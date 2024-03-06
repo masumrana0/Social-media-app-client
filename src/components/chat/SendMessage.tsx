@@ -14,10 +14,11 @@ import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 
 const SendMessage: React.FC = () => {
+  // essential state
   const [isPickerVisible, setPickerVisible] = useState(false);
   const [textAreaValue, setTextAreaValue] = useState("");
-  console.log(textAreaValue);
 
+  //   handle clicking and adding emoji in input
   const onEmojiClick = (e: any) => {
     // make string to array for copy text
     const textArray = textAreaValue.split(" ");
@@ -64,7 +65,7 @@ const SendMessage: React.FC = () => {
           onChange={(e) => setTextAreaValue(e.target.value)}
         />
         <button
-          className="ml-4 px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
+          className="ml-4  px-4  py-2  rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
           disabled={textAreaValue == ""}
           onClick={sendMessage}
         >

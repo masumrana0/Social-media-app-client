@@ -12,7 +12,7 @@ const ChatPage = () => {
   return (
     <div className="flex w-full relative box-border h-screen">
       {/* left part */}
-      <div className="lg:w-[25%] md:w-[35%]   p-4  box-border border-r-2  ">
+      <div className="lg:w-[25%] md:w-[40%]   p-4  box-border border-r-2 bg-gray-50 ">
         {/* introduction texts  */}
         <div className="flex  flex-col justify-center">
           <h2 className="font-extrabold lg:text-4xl  text-4xl  text-gray-800 mb-1  ">
@@ -32,9 +32,9 @@ const ChatPage = () => {
       </div>
 
       {/* right part */}
-      <div className="lg:w-[75%] md:w-[65%]  relative   box-border ">
+      <div className="lg:w-[75%] md:w-[60%] md:block lg:block hidden relative   box-border ">
         {/* Conversation part  */}
-        <div className=" p-20  box-border bg-sky-200 h-screen   ">
+        <div className=" lg:p-20 md:p-10 box-border bg-sky-200 h-screen   ">
           {/* friend text */}
           <FriendMessageCard />
 
