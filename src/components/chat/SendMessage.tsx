@@ -1,63 +1,36 @@
+/**
+ * Title: 'message sending with emoji picker define done'
+ * Description: ''
+ * Author: 'Masum Rana'
+ * Date: 06-03-2024
+ *
+ */
+
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
-import { FaRegSmile, FaPlus, FaPaperPlane } from "react-icons/fa";
+import { FaRegSmile, FaPlus } from "react-icons/fa";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 
-interface Emoji {
-  native: string;
-}
-
 const SendMessage: React.FC = () => {
   const [isPickerVisible, setPickerVisible] = useState(false);
-  const [message, setMessage] = useState("");
-  const [emojis, setEmojis] = useState<string[]>([]);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [textAreaValue, setTextAreaValue] = useState("");
+  console.log(textAreaValue);
 
-  const handleEmojiSelect = (e: any) => {
-    setEmojis([...emojis, e.native]);
-  };
-
-  const eraseEmoji = () => {
-    if (emojis.length > 0) {
-      setEmojis(emojis.slice(0, emojis.length - 1));
-    }
+  const onEmojiClick = (e: any) => {
+    // make string to array for copy text
+    const textArray = textAreaValue.split(" ");
+    // add  new emoji
+    const message = [...textArray, e.native];
+    // set message value as sting with emoji
+    setTextAreaValue(message.join(""));
   };
 
   const sendMessage = () => {
-    const fullMessage = message + emojis.join("");
-    console.log("Sending message:", fullMessage);
-    setMessage("");
-    setEmojis([]);
+    console.log("hello world");
+    console.log(textAreaValue);
   };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Backspace") {
-      if (event.ctrlKey || event.metaKey) {
-        return;
-      }
-
-      event.preventDefault();
-      if (emojis.length > 0) {
-        eraseEmoji();
-      } else if (message.length > 0) {
-        setMessage(message.slice(0, message.length - 1));
-      }
-    } else if (event.ctrlKey || event.metaKey) {
-      // Do nothing when control/command key is pressed
-      return;
-    } else {
-      event.preventDefault(); // Prevent duplicate characters
-      setEmojis([...emojis, event.key]);
-    }
-  };
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [message, emojis]);
 
   return (
     <div className="flex items-center p-4 border rounded-lg bg-gray-100 lg:px-32">
@@ -68,7 +41,7 @@ const SendMessage: React.FC = () => {
         >
           <Picker
             previewPosition="none"
-            onEmojiSelect={handleEmojiSelect}
+            onEmojiSelect={onEmojiClick}
             data={data}
           />
         </div>
@@ -85,16 +58,14 @@ const SendMessage: React.FC = () => {
       </div>
       <form className="flex w-full">
         <textarea
-          ref={inputRef}
-          className="w-full h-12 border-none rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full h-12 border-none rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-sky-500"
           placeholder="Type your message..."
-          value={emojis.join("")} // Combine emojis for display
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown}
+          value={textAreaValue}
+          onChange={(e) => setTextAreaValue(e.target.value)}
         />
         <button
           className="ml-4 px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
-          disabled={emojis.join("").trim() === ""}
+          disabled={textAreaValue == ""}
           onClick={sendMessage}
         >
           <AiOutlineSend className="h-6 w-6" />
