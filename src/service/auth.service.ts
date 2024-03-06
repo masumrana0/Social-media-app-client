@@ -1,7 +1,9 @@
+import { jwtDecode } from "jwt-decode";
 import { authKey } from "@/constants/storegeKey";
 import { instance as axiosInstance } from "@/helpers/axios/axiosInstance";
 import { getBaseUrl } from "@/helpers/config/envConfig";
 import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
+import { IDecodedToken } from "@/types/shared";
 
 export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
   return setToLocalStorage(authKey, accessToken as string);
@@ -10,24 +12,22 @@ export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
 export const isLoggedIn = () => {
   const authToken = getFromLocalStorage(authKey);
   // console.log(authToken);
-  
+
   return !!authToken;
 };
 
-// export const getUserInfo = (): IDecodedToken | null => {
-//   if (isLoggedIn()) {
-//     const token = getFromLocalStorage(authKey);
-//     try {
-//       const userDecodedData = jwtDecode(token as string) as IDecodedToken;
-//       return userDecodedData;
-//     } catch (error) {
-//       console.error("Error decoding token:", error);
-//     }
-//   }
-//   return null;
-// };
-
-// console.log(getUserInfo());
+export const getUserInfo = (): IDecodedToken | null => {
+  if (isLoggedIn()) {
+    const token = getFromLocalStorage(authKey);
+    try {
+      const userDecodedData = jwtDecode(token as string) as IDecodedToken;
+      return userDecodedData;
+    } catch (error) {
+      console.error("Error decoding token:", error);
+    }
+  }
+  return null;
+};
 
 export const removeUserInfo = (key: string) => {
   return localStorage.removeItem(key);

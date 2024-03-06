@@ -57,21 +57,20 @@ const SendMessage: React.FC = () => {
           <FaPlus />
         </button>
       </div>
-      <form className="flex w-full">
-        <textarea
-          className="w-full h-12 border-none rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-sky-500"
-          placeholder="Type your message..."
-          value={textAreaValue}
-          onChange={(e) => setTextAreaValue(e.target.value)}
-        />
-        <button
-          className="ml-4  px-4  py-2  rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
-          disabled={textAreaValue == ""}
-          onClick={sendMessage}
-        >
-          <AiOutlineSend className="h-6 w-6" />
-        </button>
-      </form>
+
+      <textarea
+        className="w-full h-12 border-none rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-sky-500"
+        placeholder="Type your message..."
+        value={textAreaValue}
+        onChange={(e) => setTextAreaValue(e.target.value)}
+      />
+      <button
+        className="ml-4  px-4  py-2  rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
+        disabled={textAreaValue == ""}
+        onClick={sendMessage}
+      >
+        <AiOutlineSend className="h-6 w-6" />
+      </button>
     </div>
   );
 };

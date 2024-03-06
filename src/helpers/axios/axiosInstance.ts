@@ -33,8 +33,9 @@ instance.interceptors.request.use(
 // Add a response interceptor
 instance.interceptors.response.use(
   function (response) {
+    // console.log(response);
     const responseObject: any = {
-      statusCode: response?.data.statusCode,
+      // statusCode: response?.data.statusCode,
       data: response?.data?.data,
       meta: response?.data?.meta,
       // success:response?.data?.success,

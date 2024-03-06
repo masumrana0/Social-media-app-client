@@ -3,8 +3,15 @@ export type IName = {
   lastName?: string;
 };
 
-export type IUserSpecificField = {
+export type IUserCommonData = {
   userId?: string;
   name: IName;
   profilePicture?: string;
 };
+
+export interface IDecodedToken {
+  userId: string;
+  userName: string;
+  role: "normal_user" | "admin";
+  email: string;
+}

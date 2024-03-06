@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useAppDispatch } from "@/Redux/hooks";
 import { changeAuthState } from "@/Redux/Slices/authSlice";
 import { useLoginMutation } from "@/Redux/api/authApi";
-import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
+import { setToLocalStorage } from "@/utils/local-storage";
 import { authKey } from "@/constants/storegeKey";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "../ui/LoadingSpinner";
@@ -78,7 +78,7 @@ const LoginForm: React.FC = () => {
         </div>
         <div className="mt-6 w-full">
           <div className="mt-6 w-full">
-            <Button>login</Button>
+            <Button isLoading={isLoading}>login</Button>
           </div>
         </div>
       </form>

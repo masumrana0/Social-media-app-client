@@ -5,7 +5,7 @@ const chatApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createConversation: build.mutation({
       query: (data: IConversation) => ({
-        url: `conversation`,
+        url: `/conversation`,
         method: "POST",
         body: data,
       }),
@@ -13,7 +13,7 @@ const chatApi = baseApi.injectEndpoints({
     }),
     getConversations: build.query({
       query: () => ({
-        url: `conversation`,
+        url: `/conversation`,
         method: "GET",
       }),
       providesTags: ["conversation"],

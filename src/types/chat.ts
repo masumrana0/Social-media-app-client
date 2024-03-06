@@ -1,16 +1,17 @@
 import { IUser } from "./auth";
-import { IUserSpecificField } from "./shared";
+import { IUserCommonData } from "./shared";
 
 export interface IConversation {
-  creator?: string | IUser;
-  participant: string | IUser;
+  _id?: string;
+  creator?: string | IUser | IUserCommonData;
+  participant: string | IUser | IUserCommonData;
 }
 
 export interface IMessage {
   text?: string;
   attachment?: string[];
-  sender: string | IUser | IUserSpecificField;
-  receiver: string | IUser | IUserSpecificField;
+  sender: string | IUser | IUserCommonData;
+  receiver: string | IUser | IUserCommonData;
   date_time?: Date;
   conversation_id: string;
 }

@@ -1,14 +1,22 @@
-"use client";
+/**
+ * Title: 'Chating page define By Masum Rana '
+ * Description: ''
+ * Author: 'Masum Rana'
+ * Date: 06-03-2024
+ *
+ */
+
 import React from "react";
-import Image from "next/image";
-import img from "/public/assests/profile.jpg";
 import FriendsSwiper from "@/components/chat/FriendsSwiper";
 import ConversaionCard from "@/components/chat/ConversaionCard";
 import LayoutControl from "@/components/chat/LayoutControl";
 import FriendMessageCard from "@/components/chat/FriendMessageCard";
 import MyMessageCard from "@/components/chat/MyMessageCard";
 import SendMessage from "@/components/chat/SendMessage";
-const ChatPage = () => {
+import { getAllConversation } from "@/dataFatch/chat/getAllConversation";
+import AllConversation from "@/components/chat/AllConversation";
+
+const ChatPage = async () => {
   return (
     <div className="flex w-full relative box-border h-screen">
       {/* left part */}
@@ -28,7 +36,7 @@ const ChatPage = () => {
         <LayoutControl />
 
         {/*conversation list */}
-        <ConversaionCard />
+        <AllConversation />
       </div>
 
       {/* right part */}
