@@ -5,32 +5,47 @@
  * Date: 06-03-2024
  *
  */
-
+"use client";
 import Image from "next/image";
 import React from "react";
-import img from "/public/assests/profile.jpg";
+// import img from "/public/assests/profile.jpg";
 import { IConversation } from "@/types/chat";
 import { getParticipantData } from "@/utils/chat.utils";
 import { IName, IUserCommonData } from "@/types/shared";
 import FullName from "@/service/name.service";
+import { useAppDispatch } from "@/Redux/hooks";
+import { setConversation } from "@/Redux/Slices/chatSlice";
+import { useSocketContext } from "@/Socket/socketContext";
 
 const ConversaionCard = ({ conversation }: { conversation: IConversation }) => {
-  const conversationCardData = getParticipantData(
-    conversation
-  ) as IUserCommonData;
+  const { onlineUsers } = useSocketContext();
+  // console.log(conversation);
 
-  const fullName = FullName(conversationCardData.name as IName);
+  // redux
+  const dispatch = useAppDispatch();
+
+  // essential need data
+  const participantData = getParticipantData(conversation) as IUserCommonData;
+  const fullName = FullName(participantData?.name as IName);
+  const isActiveUser = onlineUsers.includes(participantData.userId as string);
+  console.log(isActiveUser);
+
+  // console.log(participantData);
 
   return (
-    <div className="flex   gap-2 border rounded-lg w-full shadow-md bg-gray-100 mb-2 ">
+    <div
+      onClick={() => dispatch(setConversation(conversation as IConversation))}
+      className="flex  cursor-pointer  gap-2 border rounded-lg w-full shadow-md bg-gray-100 mb-2 "
+    >
       <div className="w-[60px] h-[60px] relative rounded-lg overflow-hidden   ">
-        <span className="bg-green-500 absolute  h-3 w-3 rounded-full"></span>
+        <span
+          className={`${isActiveUser ? "bg-green-500" : "bg-gray-400"}  absolute  h-3 w-3 rounded-full`}
+        ></span>
 
         <Image
           className="w-full h-full object-cover  "
-          src={conversationCardData.profilePicture as string}
+          src={participantData?.profilePicture as string}
           alt="Masum Rana"
-          // placeholder="blur"
           width={100}
           height={200}
         />

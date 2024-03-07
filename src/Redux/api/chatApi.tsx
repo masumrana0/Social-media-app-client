@@ -1,4 +1,4 @@
-import { IConversation } from "@/types/chat";
+import { IConversation, IMessage } from "@/types/chat";
 import { baseApi } from "./baseApi";
 
 const chatApi = baseApi.injectEndpoints({
@@ -11,6 +11,14 @@ const chatApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["conversation"],
     }),
+    sendMessage: build.mutation({
+      query: (data: IMessage) => ({
+        url: `/message`,
+        method: "POST",
+        data: data,
+      }),
+      invalidatesTags: ["message"],
+    }),
     getConversations: build.query({
       query: () => ({
         url: `/conversation`,
@@ -18,9 +26,20 @@ const chatApi = baseApi.injectEndpoints({
       }),
       providesTags: ["conversation"],
     }),
+    getMesages: build.query({
+      query: (id: string) => ({
+        url: `/message/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["message"],
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useCreateConversationMutation, useGetConversationsQuery } =
-  chatApi;
+export const {
+  useCreateConversationMutation,
+  useSendMessageMutation,
+  useGetConversationsQuery,
+  useGetMesagesQuery,
+} = chatApi;

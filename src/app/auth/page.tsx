@@ -6,8 +6,6 @@
  *
  */
 "use client";
-
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
 import { changeAuthState } from "@/Redux/Slices/authSlice";
 import Image from "next/image";

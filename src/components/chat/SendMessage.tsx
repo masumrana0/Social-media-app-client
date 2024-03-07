@@ -12,11 +12,21 @@ import { AiOutlineSend } from "react-icons/ai";
 import { FaRegSmile, FaPlus } from "react-icons/fa";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
+import { useSendMessageMutation } from "@/Redux/api/chatApi";
+import { getParticipantData } from "@/utils/chat.utils";
+import { useAppSelector } from "@/Redux/hooks";
+import { IMessage } from "@/types/chat";
 
 const SendMessage: React.FC = () => {
   // essential state
   const [isPickerVisible, setPickerVisible] = useState(false);
   const [textAreaValue, setTextAreaValue] = useState("");
+
+  // redux
+  const [sendMessage, { isLoading }] = useSendMessageMutation();
+  const conversation = useAppSelector((state) => state.chatSlice);
+
+  const participantId = getParticipantData(conversation)?.userId;
 
   //   handle clicking and adding emoji in input
   const onEmojiClick = (e: any) => {
@@ -28,9 +38,15 @@ const SendMessage: React.FC = () => {
     setTextAreaValue(message.join(""));
   };
 
-  const sendMessage = () => {
-    console.log("hello world");
-    console.log(textAreaValue);
+  const handleSendMessage = async () => {
+    const data: IMessage = {
+      text: textAreaValue,
+      receiver: participantId as string,
+    };
+    const res = await sendMessage(data);
+    if (res) {
+      setTextAreaValue("");
+    }
   };
 
   return (
@@ -67,7 +83,7 @@ const SendMessage: React.FC = () => {
       <button
         className="ml-4  px-4  py-2  rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
         disabled={textAreaValue == ""}
-        onClick={sendMessage}
+        onClick={handleSendMessage}
       >
         <AiOutlineSend className="h-6 w-6" />
       </button>
