@@ -6,10 +6,10 @@ import AllConversation from "@/components/chat/AllConversation";
 import ChatInbox from "@/components/chat/ChatInbox";
 import { useAppSelector } from "@/Redux/hooks";
 import { useSocketContext } from "@/Socket/socketContext";
+import { useEffect, useRef } from "react";
 
 const ChatPage = () => {
   const { onlineUsers, socket } = useSocketContext();
-  console.log(onlineUsers);
 
   return (
     <div className="flex w-full relative box-border h-screen">

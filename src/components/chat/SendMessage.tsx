@@ -7,7 +7,7 @@
  */
 
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { FaRegSmile, FaPlus } from "react-icons/fa";
 import Picker from "@emoji-mart/react";
@@ -16,8 +16,11 @@ import { useSendMessageMutation } from "@/Redux/api/chatApi";
 import { getParticipantData } from "@/utils/chat.utils";
 import { useAppSelector } from "@/Redux/hooks";
 import { IMessage } from "@/types/chat";
+import LoadingSpinner from "../ui/LoadingSpinner";
+import { useSocketContext } from "@/Socket/socketContext";
 
 const SendMessage: React.FC = () => {
+  const { socket } = useSocketContext();
   // essential state
   const [isPickerVisible, setPickerVisible] = useState(false);
   const [textAreaValue, setTextAreaValue] = useState("");
@@ -38,6 +41,8 @@ const SendMessage: React.FC = () => {
     setTextAreaValue(message.join(""));
   };
 
+  const handleChange = (e: any) => {};
+
   const handleSendMessage = async () => {
     const data: IMessage = {
       text: textAreaValue,
@@ -48,6 +53,28 @@ const SendMessage: React.FC = () => {
       setTextAreaValue("");
     }
   };
+
+  // Typing logic
+  useEffect(() => {
+    const handleTyping = () => {
+      console.log(textAreaValue.length);
+
+      if (textAreaValue.length > 0) {
+        socket?.emit("typing", true); // Emit 'typing' event when user starts typing
+      } else if (textAreaValue.length === 0) {
+        socket?.emit("stopTyping"); // Emit 'stopTyping' event when user stops typing
+      }
+    };
+
+    handleTyping();
+    // socket?.on("connect", handleTyping); // Add typing event listener on socket connect
+    socket?.on("disconnect", handleTyping); // Remove typing event listener on socket disconnect
+
+    return () => {
+      socket?.off("connect", handleTyping);
+      socket?.off("disconnect", handleTyping);
+    };
+  }, [socket, textAreaValue]); // Dependencies for the effect
 
   return (
     <div className="flex items-center p-4 border rounded-lg bg-gray-100 lg:px-32">
@@ -85,7 +112,11 @@ const SendMessage: React.FC = () => {
         disabled={textAreaValue == ""}
         onClick={handleSendMessage}
       >
-        <AiOutlineSend className="h-6 w-6" />
+        {isLoading ? (
+          <LoadingSpinner type="small" />
+        ) : (
+          <AiOutlineSend className="h-6 w-6" />
+        )}
       </button>
     </div>
   );

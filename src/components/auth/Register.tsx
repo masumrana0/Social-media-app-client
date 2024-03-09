@@ -11,7 +11,7 @@ const RegisterForm: React.FC = () => {
   // React Form hook handler
   const {
     register,
-    handleSubmit,  
+    handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(userSignupSchema) });
 
@@ -92,6 +92,7 @@ const RegisterForm: React.FC = () => {
           />
           <p className="text-red-500 ms-2">{errors.email?.message}</p>
         </div>
+
         <div className="mt-2">
           <label
             htmlFor="password"
@@ -242,9 +243,10 @@ const RegisterForm: React.FC = () => {
           </select>
           <p className="text-red-500 ms-2">{errors.gender?.message}</p>
         </div>{" "}
-        *
+        
         <div className="mt-6 w-full">
-          <Button>Sign Up</Button>
+          {/* <Button>Sign Up</Button> */}
+          <button type="submit">Sign Up</button>
         </div>
       </form>
     </div>

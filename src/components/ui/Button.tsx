@@ -6,7 +6,7 @@ import LoadingSpinner from "./LoadingSpinner";
 const Button = ({
   className,
   children,
-  isLoading = true,
+  isLoading = false,
   ...restProps
 }: {
   className?: string;

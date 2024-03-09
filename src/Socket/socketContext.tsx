@@ -13,11 +13,13 @@ import { getUserInfo } from "@/service/auth.service";
 interface SocketContextProps {
   socket: Socket | null;
   onlineUsers: string[];
+  typingUsers: string[];
 }
 
 const SocketContext = createContext<SocketContextProps>({
   socket: null,
   onlineUsers: [],
+  typingUsers: [],
 });
 
 export const useSocketContext = () => {
@@ -31,6 +33,7 @@ export const SocketContextProvider = ({
 }) => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]);
+  const [typingUsers, setTypingUsers] = useState<string[]>([]);
   const userInfo = getUserInfo();
 
   useEffect(() => {
@@ -49,6 +52,12 @@ export const SocketContextProvider = ({
           setOnlineUsers(users);
         });
 
+        newSocket.on("userTyping", (data) => {
+          if (data) {
+            setTypingUsers([...typingUsers, data]);
+          }
+        });
+
         // Handle disconnection
         return () => {
           newSocket.close();
@@ -61,7 +70,7 @@ export const SocketContextProvider = ({
   }, []);
 
   return (
-    <SocketContext.Provider value={{ socket, onlineUsers }}>
+    <SocketContext.Provider value={{ socket, onlineUsers, typingUsers }}>
       {children}
     </SocketContext.Provider>
   );

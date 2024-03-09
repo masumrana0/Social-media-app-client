@@ -8,7 +8,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-// import img from "/public/assests/profile.jpg";
 import { IConversation } from "@/types/chat";
 import { getParticipantData } from "@/utils/chat.utils";
 import { IName, IUserCommonData } from "@/types/shared";
@@ -19,7 +18,6 @@ import { useSocketContext } from "@/Socket/socketContext";
 
 const ConversaionCard = ({ conversation }: { conversation: IConversation }) => {
   const { onlineUsers } = useSocketContext();
-  // console.log(conversation);
 
   // redux
   const dispatch = useAppDispatch();
@@ -27,10 +25,8 @@ const ConversaionCard = ({ conversation }: { conversation: IConversation }) => {
   // essential need data
   const participantData = getParticipantData(conversation) as IUserCommonData;
   const fullName = FullName(participantData?.name as IName);
-  const isActiveUser = onlineUsers.includes(participantData.userId as string);
-  console.log(isActiveUser);
 
-  // console.log(participantData);
+  const isActiveUser = onlineUsers.includes(participantData.userId as string);
 
   return (
     <div

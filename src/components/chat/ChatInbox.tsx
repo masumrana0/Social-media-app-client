@@ -5,18 +5,23 @@ import { useAppSelector } from "@/Redux/hooks";
 import { getUserInfo } from "@/service/auth.service";
 import MyMessageCard from "./MyMessageCard";
 import FriendMessageCard from "./FriendMessageCard";
-import { IMessage } from "@/types/chat";
+import { IConversation, IMessage } from "@/types/chat";
 import io from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSocketContext } from "@/Socket/socketContext";
+import notification_sound from "/public/sounds/notification_sound.mp3";
+import { getParticipantData } from "@/utils/chat.utils";
+import LoadingSpinner from "../ui/LoadingSpinner";
 
 const ChatInbox = () => {
-  const [message, setMessages] = useState();
-  const { socket } = useSocketContext();
+  const [socketMessages, setSocketMessages] = useState([]);
+  const { socket, typingUsers } = useSocketContext();
+  const [isTyping, setTyping] = useState(false);
+
+  const lastMessageRef = useRef();
 
   const userInfo = getUserInfo();
   const conversation = useAppSelector((state) => state.chatSlice);
-
   let messages;
   if (conversation) {
     const { data } = useGetMesagesQuery(conversation._id);
@@ -25,12 +30,22 @@ const ChatInbox = () => {
 
   useEffect(() => {
     socket?.on("new_message", (new_message) => {
-      setMessages(new_message);
-      console.log(new_message);
+      setSocketMessages([...socketMessages, new_message]);
+      const sound = new Audio(notification_sound);
+      sound.play();
     });
 
     return () => socket?.off("new_message");
-  }, [socket, setMessages, message]);
+  }, [socket, socketMessages, setSocketMessages]);
+
+  const participantid = getParticipantData(conversation as IConversation);
+
+  useEffect(() => {
+    const isTyping = typingUsers.includes(participantid as unknown as string);
+    setTyping(isTyping);
+  }, [participantid, typingUsers, socket]);
+  // console.log(isTyping);
+  console.log(typingUsers);
 
   return (
     <div className="flex flex-col">
@@ -48,11 +63,18 @@ const ChatInbox = () => {
           </div>
         );
       })}
-
-      {message && (
-        <div>
-          <FriendMessageCard message={message} />
-        </div>
+      {socketMessages.length > 0 && (
+        <>
+          {socketMessages?.map((message: IMessage) => (
+            <div key={message?._id}>
+              <FriendMessageCard message={message} />
+            </div>
+          ))}
+        </>
+      )}
+      ;
+      {isTyping && (
+        <div className="float-right">{isTyping && <LoadingSpinner />}</div>
       )}
     </div>
   );
