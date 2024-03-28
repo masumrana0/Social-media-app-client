@@ -1,7 +1,10 @@
+import Image from "next/image";
 import FullName from "@/service/name.service";
 import { INotification } from "@/types/navbar";
-import Image from "next/image";
-import { BsPersonCircle, BsShare } from "react-icons/bs";
+import { Avatar } from "antd";
+// icons
+import { BsShare } from "react-icons/bs";
+import { UserOutlined } from "@ant-design/icons";
 
 const SharedNotification = (props: { notification: INotification }) => {
   const { notification } = props;
@@ -10,19 +13,11 @@ const SharedNotification = (props: { notification: INotification }) => {
     <div className="flex justify-between items-center p-2 border-b-2  hover:bg-gray-300 rounded">
       <div className="flex items-center gap-2">
         <div>
-          {notification?.user?.profilePicture ? (
-            <Image
-              src={notification?.user.profilePicture}
-              alt="profile picture "
-              width={50}
-              height={50}
-              className="rounded-full"
-            />
-          ) : (
-            <span className="text-2xl">
-              <BsPersonCircle />
-            </span>
-          )}
+          <Avatar
+            size="large"
+            src={notification?.user.profilePicture}
+            icon={<UserOutlined />}
+          />
         </div>
         <h3>
           <span className=" font-bold">{fullName}</span>{" "}
