@@ -1,19 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Chat,
-  House,
-  Bell,
-  Plus,
-  GearSix,
-  Pen,
-  Phone,
-  SignOut,
-  SquaresFour,
-  UserCircle,
-  Users,
-  UserPlus,
-} from "phosphor-react";
+import { Chat, House, Bell, Plus, SquaresFour, UserPlus } from "phosphor-react";
 import { Dropdown } from "antd";
 import { notificationItems } from "@/components/dropdown/items/NotificationItem";
 import { friendRequestItems } from "@/components/dropdown/items/FriendsRequestItem";
