@@ -1,7 +1,12 @@
 // next.config.mjs
 const nextConfig = {
   images: {
-    domains: ["images.pexels.com", "avatars.githubusercontent.com"],
+    domains: [
+      "images.pexels.com",
+      "avatars.githubusercontent.com",
+      "www.gravatar.com",
+      "i.ibb.co",
+    ],
   },
   webpack: (config, { isServer }) => {
     // Add loader for MP3 files

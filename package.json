@@ -16,10 +16,12 @@
     "test-all": "npm run type-check && npm run format-check && npm run format-fix && npm run lint-check && npm run lint-fix"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.0",
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
     "@hookform/resolvers": "^3.3.4",
     "@reduxjs/toolkit": "^2.0.1",
+    "antd": "^5.15.4",
     "axios": "^1.6.5",
     "clsx": "^2.1.0",
     "emoji-mart": "^5.5.2",
