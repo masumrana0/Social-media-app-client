@@ -1,10 +1,24 @@
-import Auth from "@/components/auth/Auth";
-import { isLoggedIn } from "@/service/auth.service";
+"use client";
+
+import DesktopNavbar from "@/components/navbar/DesktopNavbar";
 
 const HomePage = () => {
-  const isLogged = isLoggedIn();
+  // const [isLogged, setIsLogged] = useState(false);
 
-  return <div>{isLogged ? <h3>This is home page</h3> : <Auth />}</div>;
+  // useEffect(() => {
+  //   setIsLogged(isLoggedIn());
+  // }, []);
+
+  return (
+    <div>
+      <DesktopNavbar />
+      {/* <h3>This is home page</h3>
+      <LoadingSpinner type="regular" />
+      <Button className="bg-sky-800" size="md">
+        Default
+      </Button> */}
+    </div>
+  );
 };
 
 export default HomePage;
