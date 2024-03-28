@@ -7,17 +7,17 @@
  */
 
 "use client";
+import { useSendMessageMutation } from "@/Redux/api/chatApi";
+import { useAppSelector } from "@/Redux/hooks";
+import { useSocketContext } from "@/Socket/socketContext";
+import { IMessage } from "@/types/chat";
+import { getParticipantData } from "@/utils/chat.utils";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 import React, { useEffect, useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
-import { FaRegSmile, FaPlus } from "react-icons/fa";
-import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
-import { useSendMessageMutation } from "@/Redux/api/chatApi";
-import { getParticipantData } from "@/utils/chat.utils";
-import { useAppSelector } from "@/Redux/hooks";
-import { IMessage } from "@/types/chat";
-import LoadingSpinner from "../ui/LoadingSpinner";
-import { useSocketContext } from "@/Socket/socketContext";
+import { FaPlus, FaRegSmile } from "react-icons/fa";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 const SendMessage: React.FC = () => {
   const { socket } = useSocketContext();

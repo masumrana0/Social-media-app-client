@@ -1,8 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import Auth from "@/components/auth/Auth";
-import { isLoggedIn } from "@/service/auth.service";
-import LoadingSpinner from "@/components/ui/LoadingSpinner";
+
+import DesktopNavbar from "@/components/navbar/DesktopNavbar";
 
 const HomePage = () => {
   // const [isLogged, setIsLogged] = useState(false);
@@ -12,10 +10,13 @@ const HomePage = () => {
   // }, []);
 
   return (
-    <div className="flex">
-      {" "}
-      <h3>This is home page</h3>
+    <div>
+      <DesktopNavbar />
+      {/* <h3>This is home page</h3>
       <LoadingSpinner type="regular" />
+      <Button className="bg-sky-800" size="md">
+        Default
+      </Button> */}
     </div>
   );
 };

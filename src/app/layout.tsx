@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/lib/Providers";
-import { SocketContextProvider } from "@/Socket/socketContext";
+// import { SocketContextProvider } from "@/Socket/socketContext";
 import React from "react";
-const ProvidersMemoized = React.memo(Providers);
-const SocketContextProviderMemoized = React.memo(SocketContextProvider);
-
+import DesktopNavbar from "@/components/navbar/DesktopNavbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,9 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <SocketContextProvider>
-          <body className={inter.className}>{children}</body>
-        </SocketContextProvider>
+        {/* <SocketContextProvider> */}
+        {/* <DesktopNavbar /> */}
+        <body className={inter.className}>{children}</body>
+        {/* </SocketContextProvider> */}
       </Providers>
     </html>
   );

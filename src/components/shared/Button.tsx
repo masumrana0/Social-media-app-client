@@ -22,8 +22,7 @@ const Button = ({
         "w-full text-xl px-4 py-2 bg-sky-500 text-white rounded-md hover:bg-sky-600 transition-colors duration-300 ",
         className,
         {
-          "flex justify-center items-center gap-2 bg-gray-300 hover:bg-gray-300":
-            isLoading,
+          "flex justify-center items-center gap-2 bg-gray-300": isLoading,
         }
       )}
     >

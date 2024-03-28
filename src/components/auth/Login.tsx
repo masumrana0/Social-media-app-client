@@ -1,19 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { ILogin } from "@/types/auth";
-import userLoginSchema from "@/schema/login.schema";
-import Button from "../ui/Button";
-import Link from "next/link";
-import { useAppDispatch } from "@/Redux/hooks";
 import { changeAuthState } from "@/Redux/Slices/authSlice";
 import { useLoginMutation } from "@/Redux/api/authApi";
-import { setToLocalStorage } from "@/utils/local-storage";
+import { useAppDispatch } from "@/Redux/hooks";
 import { authKey } from "@/constants/storegeKey";
+import userLoginSchema from "@/schema/login.schema";
+import { ILogin } from "@/types/auth";
+import { setToLocalStorage } from "@/utils/local-storage";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import LoadingSpinner from "../ui/LoadingSpinner";
+import { useForm } from "react-hook-form";
+import Button from "../shared/Button";
 
 const LoginForm: React.FC = () => {
   // form handler

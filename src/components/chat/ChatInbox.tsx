@@ -2,16 +2,15 @@
 "use client";
 import { useGetMesagesQuery } from "@/Redux/api/chatApi";
 import { useAppSelector } from "@/Redux/hooks";
-import { getUserInfo } from "@/service/auth.service";
-import MyMessageCard from "./MyMessageCard";
-import FriendMessageCard from "./FriendMessageCard";
-import { IConversation, IMessage } from "@/types/chat";
-import io from "socket.io-client";
-import { useEffect, useRef, useState } from "react";
 import { useSocketContext } from "@/Socket/socketContext";
-import notification_sound from "/public/sounds/notification_sound.mp3";
+import { getUserInfo } from "@/service/auth.service";
+import { IConversation, IMessage } from "@/types/chat";
 import { getParticipantData } from "@/utils/chat.utils";
-import LoadingSpinner from "../ui/LoadingSpinner";
+import { useEffect, useRef, useState } from "react";
+import LoadingSpinner from "../shared/LoadingSpinner";
+import FriendMessageCard from "./FriendMessageCard";
+import MyMessageCard from "./MyMessageCard";
+import notification_sound from "/public/sounds/notification_sound.mp3";
 
 const ChatInbox = () => {
   const [socketMessages, setSocketMessages] = useState([]);

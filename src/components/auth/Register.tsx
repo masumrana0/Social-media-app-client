@@ -1,11 +1,9 @@
 "use client";
+import userSignupSchema from "@/schema/register.schema";
+import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import userSignupSchema from "@/schema/register.schema";
-import { IUser } from "@/types/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Button from "../ui/Button";
 
 const RegisterForm: React.FC = () => {
   // React Form hook handler
@@ -92,7 +90,6 @@ const RegisterForm: React.FC = () => {
           />
           <p className="text-red-500 ms-2">{errors.email?.message}</p>
         </div>
-
         <div className="mt-2">
           <label
             htmlFor="password"
@@ -243,7 +240,6 @@ const RegisterForm: React.FC = () => {
           </select>
           <p className="text-red-500 ms-2">{errors.gender?.message}</p>
         </div>{" "}
-        
         <div className="mt-6 w-full">
           {/* <Button>Sign Up</Button> */}
           <button type="submit">Sign Up</button>
