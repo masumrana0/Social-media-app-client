@@ -67,8 +67,14 @@ const notifications: INotification[] = [
   },
 ];
 
-export const notificationItems: MenuProps["items"] = notifications.map(
-  (notification: INotification, index: number) => {
+const viewAllButton = (
+  <button className="w-full mt-4 py-1  bg-gray-300 text-center rounded font-semibold text-gray-600 hover:bg-sky-500 hover:text-white transition-colors duration-300">
+    VIEW ALL
+  </button>
+);
+
+export const notificationItems: MenuProps["items"] = notifications
+  .map((notification: INotification, index: number) => {
     let labelComponent;
 
     switch (notification.category) {
@@ -95,5 +101,8 @@ export const notificationItems: MenuProps["items"] = notifications.map(
       key: `${index + 1}`,
       label: labelComponent,
     };
-  }
-);
+  })
+  .concat({
+    key: "view-all",
+    label: viewAllButton,
+  });

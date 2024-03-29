@@ -1,10 +1,9 @@
 "use client";
-import Image from "next/image";
 import FullName from "@/service/name.service";
 import { INotification } from "@/types/navbar";
 import { Avatar } from "antd";
 // icons
-import { BsPersonCircle, BsHeart } from "react-icons/bs";
+import { BsHeart } from "react-icons/bs";
 import { UserOutlined } from "@ant-design/icons";
 
 const LikeNotification = (props: { notification: INotification }) => {
@@ -15,7 +14,7 @@ const LikeNotification = (props: { notification: INotification }) => {
       <div className="flex items-center gap-2">
         <div>
           <Avatar
-            size="large"
+            size="small"
             src={notification?.user.profilePicture}
             icon={<UserOutlined />}
           />

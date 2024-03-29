@@ -1,7 +1,9 @@
 import FullName from "@/service/name.service";
 import { INotification } from "@/types/navbar";
-import Image from "next/image";
-import { BsPersonCircle, BsChatLeftDots } from "react-icons/bs";
+import { Avatar } from "antd";
+
+import { BsChatLeftDots } from "react-icons/bs";
+import { UserOutlined } from "@ant-design/icons";
 
 const CommentNotification = (props: { notification: INotification }) => {
   const { notification } = props;
@@ -9,21 +11,11 @@ const CommentNotification = (props: { notification: INotification }) => {
   return (
     <div className="flex justify-between items-center p-2 border-b-2  hover:bg-sky-300 rounded">
       <div className="flex items-center gap-2">
-        <div>
-          {notification?.user?.profilePicture ? (
-            <Image
-              src={notification?.user.profilePicture}
-              alt="profile picture "
-              width={50}
-              height={50}
-              className="rounded-full"
-            />
-          ) : (
-            <span className="text-xl">
-              <BsPersonCircle />
-            </span>
-          )}
-        </div>
+        <Avatar
+          size="small"
+          src={notification?.user.profilePicture}
+          icon={<UserOutlined />}
+        />
         <h3 className="text-sm text-gray-500">
           <span className="text-gray-700 font-bold">{fullName}</span>{" "}
           <span className="">commented on</span>{" "}

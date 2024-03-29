@@ -50,10 +50,6 @@ const FriendsRequestLabel = ({
           </div>
         </div>
       </div>
-
-      <p className="mt-4 py-1  bg-gray-300 text-center rounded font-semibold text-gray-600 hover:bg-sky-500 hover:text-white transition-colors duration-300">
-        VIEW ALL
-      </p>
     </div>
   );
 };
