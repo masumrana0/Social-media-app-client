@@ -1,10 +1,9 @@
-import Image from "next/image";
 import FullName from "@/service/name.service";
 import { INotification } from "@/types/navbar";
 import { Avatar } from "antd";
 // icons
-import { BsShare } from "react-icons/bs";
 import { UserOutlined } from "@ant-design/icons";
+import { BsShare } from "react-icons/bs";
 
 const SharedNotification = (props: { notification: INotification }) => {
   const { notification } = props;
@@ -14,7 +13,7 @@ const SharedNotification = (props: { notification: INotification }) => {
       <div className="flex items-center gap-2">
         <div>
           <Avatar
-            size="small"
+            size="large"
             src={notification?.user.profilePicture}
             icon={<UserOutlined />}
           />

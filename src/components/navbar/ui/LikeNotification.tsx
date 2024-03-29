@@ -3,8 +3,8 @@ import FullName from "@/service/name.service";
 import { INotification } from "@/types/navbar";
 import { Avatar } from "antd";
 // icons
-import { BsHeart } from "react-icons/bs";
 import { UserOutlined } from "@ant-design/icons";
+import { BsHeart } from "react-icons/bs";
 
 const LikeNotification = (props: { notification: INotification }) => {
   const { notification } = props;
@@ -14,7 +14,7 @@ const LikeNotification = (props: { notification: INotification }) => {
       <div className="flex items-center gap-2">
         <div>
           <Avatar
-            size="small"
+            size="large"
             src={notification?.user.profilePicture}
             icon={<UserOutlined />}
           />

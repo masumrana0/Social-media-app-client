@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { MagnifyingGlass, X } from "phosphor-react";
+import { MagnifyingGlass } from "phosphor-react";
 
 function SearchBar() {
   const [isFocused, setIsFocused] = useState(false);
@@ -8,21 +8,21 @@ function SearchBar() {
   return (
     <div className="relative">
       <div
-        className={`w-96 flex gap-1 items-center border bg-white ${isFocused ? "rounded-t-md" : "rounded-full"}  p-2`}
+        className={`lg:w-[25rem] md:w-[15rem] flex    items-center border bg-white ${isFocused ? "rounded-t-md" : "rounded-full"}  p-2`}
       >
-        {isFocused ? null : <MagnifyingGlass size={24} />}
+        <span>{isFocused ? null : <MagnifyingGlass size={24} />}</span>
         <input
           type="text"
           placeholder="Search..."
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="outline-none flex-1"
+          className="outline-none  "
         />
-        {isFocused ? (
-          <button className="bg-gray-200 p-1 rounded-full font-bold">
+        {/* {isFocused ? (
+          <button className="bg-gray-200 flex justify-end p-1 rounded-full font-bold">
             <X size={20} />
           </button>
-        ) : null}
+        ) : null} */}
       </div>
 
       <div

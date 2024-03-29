@@ -1,5 +1,6 @@
 import type { MenuProps } from "antd";
-import FriendsRequestLabel from "../labels/FriendsRequestLabel";
+
+import ChatLabel from "../labels/ChatLabel";
 
 interface UserData {
   name: {
@@ -9,7 +10,7 @@ interface UserData {
   profilePicture: string;
   mutualFriends: number;
 }
-const FriendsRequests: UserData[] = [
+const conversations: UserData[] = [
   {
     name: {
       firstName: "Masum",
@@ -26,18 +27,18 @@ const viewAllButton = (
     VIEW ALL
   </button>
 );
-export const friendRequestItems: MenuProps["items"] = FriendsRequests.map(
-  (friendRequest: UserData, index: number) => {
+export const ChatItems: MenuProps["items"] = conversations
+  .map((conversation: UserData, index: number) => {
     const labelComponent = (
-      <FriendsRequestLabel key={index} friendRequest={friendRequest} />
+      <ChatLabel key={index} conversation={conversation} />
     );
 
     return {
       key: `${index + 1}`,
       label: labelComponent,
     };
-  }
-).concat({
-  key: "view-all",
-  label: viewAllButton,
-});
+  })
+  .concat({
+    key: "view-all",
+    label: viewAllButton,
+  });
