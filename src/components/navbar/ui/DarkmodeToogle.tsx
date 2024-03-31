@@ -5,7 +5,7 @@ import { FaDesktop } from "react-icons/fa6";
 import { Select, Space } from "antd";
 
 const DarkmodeToggle = () => {
-  const shouldRenderOnServer = typeof window === "undefined";
+  //   const shouldRenderOnServer = typeof window === "undefined";
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "System"
   );

@@ -1,7 +1,3 @@
-"use client";
-
-import DesktopNavbar from "@/components/navbar/DesktopNavbar";
-
 const HomePage = () => {
   // const [isLogged, setIsLogged] = useState(false);
 
@@ -11,7 +7,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <DesktopNavbar />
+      {/* <DesktopNavbar /> */}
       {/* <h3>This is home page</h3>
       <LoadingSpinner type="regular" />
       <Button className="bg-sky-800" size="md">

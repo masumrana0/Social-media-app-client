@@ -14,13 +14,14 @@ const Navigation = () => {
   return (
     <div>
       <div className="flex items-center gap-4">
-        <div className=" sm:hidden   md:flex gap-2 items-center px-2 py-1 rounded-full border  border-sky-300 hover:bg-sky-100">
+        <div className="hidden   md:flex gap-2 items-center px-2 py-1 rounded-full border  border-sky-300 hover:bg-sky-100">
           <Avatar size="small" src={masum} icon={<UserOutlined />} />
           <h3 className="text-gray-800 text-sm font-semibold">Masum</h3>
         </div>
-        <nav className="flex items-center gap-3">
+
+        <nav className="flex items-center gap-10 md:gap-3  ">
           <div className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
-            <House className="text-sky-500 font-bold" size={25} />
+            <House className="text-sky-500 font-bold md:text-xl" />
           </div>
 
           {/* chat  */}
@@ -31,7 +32,7 @@ const Navigation = () => {
             arrow
           >
             <div className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
-              <Chat className="text-sky-500 font-bold" size={25} />
+              <Chat className="text-sky-500 font-bold md:text-xl" />
             </div>
           </Dropdown>
 
@@ -43,7 +44,7 @@ const Navigation = () => {
             arrow
           >
             <div className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
-              <UserPlus className="text-sky-500 font-bold" size={25} />
+              <UserPlus className="text-sky-500 font-bold md:text-xl" />
             </div>
           </Dropdown>
           {/* notification */}
@@ -54,26 +55,28 @@ const Navigation = () => {
             arrow
           >
             <div className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
-              <Bell className="text-sky-500 font-bold" size={25} />
+              <Bell className="text-sky-500 font-bold md:text-xl" />
             </div>
           </Dropdown>
 
           {/* create post */}
           <div className="hidden md:block border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
-            <Plus className="text-sky-500 font-bold" size={25} />
+            <Plus className="text-sky-500 font-bold md:text-xl" />
           </div>
 
           {/* essential */}
-          <Dropdown
-            className="cursor-pointer"
-            menu={{ items: SquaresFourItems }}
-            placement="bottomLeft"
-            arrow
-          >
-            <div className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
-              <SquaresFour className="text-sky-500 font-bold" size={25} />
-            </div>
-          </Dropdown>
+          <div className="hidden md:block">
+            <Dropdown
+              className="cursor-pointer"
+              menu={{ items: SquaresFourItems }}
+              placement="bottomLeft"
+              arrow
+            >
+              <div className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
+                <SquaresFour className="text-sky-500 font-bold md:text-xl" />
+              </div>
+            </Dropdown>
+          </div>
         </nav>
       </div>
     </div>
