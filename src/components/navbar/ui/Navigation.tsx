@@ -25,16 +25,18 @@ const Navigation = () => {
           </div>
 
           {/* chat  */}
-          <Dropdown
-            menu={{ items: ChatItems }}
-            className="cursor-pointer"
-            placement="bottomRight"
-            arrow
-          >
-            <div className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full ">
-              <Chat className="text-sky-500 font-bold md:text-xl" />
-            </div>
-          </Dropdown>
+          <div style={{ width: "100%" }}>
+            <Dropdown
+              menu={{ items: ChatItems }}
+              className="cursor-pointer dropdown"
+              placement="bottomRight"
+              arrow
+            >
+              <div className="w-full border border-sky-400 bg-sky-100 hover:bg-sky-200 transition-colors duration-300 p-2 rounded-full ">
+                <Chat className="text-sky-500 font-bold md:text-xl" />
+              </div>
+            </Dropdown>
+          </div>
 
           {/* Friend Request */}
           <Dropdown
