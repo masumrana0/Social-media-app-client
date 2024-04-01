@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressContentEditableWarning={true}>
+    <html lang="en" className="dark">
       <Providers>
         {/* <SocketContextProvider> */}
         <body className={inter.className}>

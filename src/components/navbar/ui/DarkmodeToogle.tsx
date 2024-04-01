@@ -7,46 +7,47 @@ import { Select, Space } from "antd";
 const DarkmodeToggle = () => {
   //   const shouldRenderOnServer = typeof window === "undefined";
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "System"
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "system"
   );
+
   const DarkQuery = window.matchMedia("(prefers-color-scheme:Dark)");
   const element = document.documentElement;
 
   const options = [
     {
       icon: BsSun,
-      text: "Light",
+      text: "light",
     },
     {
       icon: BsFillMoonFill,
-      text: "Dark",
+      text: "dark",
     },
     {
       icon: FaDesktop,
-      text: "System",
+      text: "system",
     },
   ];
 
   const onWindowMatch = () => {
     if (
-      localStorage.theme === "Dark" ||
+      localStorage.theme === "dark" ||
       (!("theme" in localStorage) && DarkQuery.matches)
     ) {
-      element.classList.add("Dark");
+      element.classList.add("dark");
     } else {
-      element.classList.remove("Dark");
+      element.classList.remove("dark");
     }
   };
 
   useEffect(() => {
     switch (theme) {
-      case "Dark":
-        element.classList.add("Dark");
-        localStorage.setItem("theme", "Dark");
+      case "dark":
+        element.classList.add("dark");
+        localStorage.setItem("theme", "dark");
         break;
-      case "Light":
-        element.classList.remove("Dark");
-        localStorage.setItem("theme", "Light");
+      case "light":
+        element.classList.remove("dark");
+        localStorage.setItem("theme", "light");
         break;
       default:
         localStorage.removeItem("theme");
@@ -59,9 +60,9 @@ const DarkmodeToggle = () => {
   DarkQuery.addEventListener("change", (e) => {
     if (!("theme" in localStorage)) {
       if (e.matches) {
-        element.classList.add("Dark");
+        element.classList.add("dark");
       } else {
-        element.classList.remove("Dark");
+        element.classList.remove("dark");
       }
     }
   });
@@ -70,7 +71,7 @@ const DarkmodeToggle = () => {
     value: option.text,
     label: (
       <button className="w-full flex justify-between items-center font-semibold  ">
-        {option.text}
+        <span className="capitalize ">{option.text}</span>
         <option.icon className="text-lg" />
       </button>
     ),
