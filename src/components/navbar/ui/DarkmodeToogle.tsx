@@ -77,7 +77,7 @@ const DarkmodeToggle = () => {
     ),
   }));
 
-  const defaultValue = "System";
+  const defaultValue = theme;
 
   return (
     <Space className="w-full  flex justify-end">
