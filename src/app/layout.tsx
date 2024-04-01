@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <Providers>
         {/* <SocketContextProvider> */}
-        <body className={inter.className}>
+        <body
+          className={`${inter.className} dark:bg-slate-800 transition-colors duration-300`}
+        >
           <Navbar />
           {children}
         </body>

@@ -22,6 +22,8 @@ import {
 // components
 import DarkmodeToggle from "./ui/DarkmodeToogle";
 import Navigation from "./ui/Navigation";
+import NotificationDropDown from "../dropdown/Notification";
+import FriendRequestDropdown from "../dropdown/FriendRequest";
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -243,16 +245,7 @@ const MobileNavbar = () => {
       {/* all Dropdown */}
       <div>
         {/* notification drowpdawn content */}
-        {isNotification && (
-          <div className="bg-black-100 absolute top-10 h-[94vh] left-0 w-full  rounded-md p-3 z-10">
-            <div className="flex flex-col">
-              <h3 className="font-bold text-2xl text-slate-600">
-                Notification
-              </h3>
-              <h3>hello world</h3>
-            </div>
-          </div>
-        )}
+        {isNotification && <NotificationDropDown />}
         {/* chat drowpdawn content */}
         {isChat && (
           <div className="bg-gray-200 absolute top-10 h-[80vh] left-0 w-full  rounded-md p-3 z-10">
@@ -267,15 +260,7 @@ const MobileNavbar = () => {
             </div>
           </div>
         )}
-        {isFriendRequest && (
-          <div className="bg-gray-200 absolute top-10 h-[80vh] left-0 w-full  rounded-md p-3 z-10">
-            <div className="flex flex-col">
-              <h3 className="font-bold text-2xl text-slate-600">
-                Friend Request
-              </h3>
-            </div>
-          </div>
-        )}
+        {isFriendRequest && <FriendRequestDropdown />}
       </div>
     </div>
   );

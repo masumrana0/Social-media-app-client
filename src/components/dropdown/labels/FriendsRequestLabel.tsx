@@ -15,43 +15,33 @@ interface UserData {
   mutualFriends: number;
 }
 
-const FriendsRequestLabel = ({
-  friendRequest,
-}: {
-  friendRequest: UserData;
-}) => {
+const FriendsRequest = ({ friendRequest }: { friendRequest: UserData }) => {
   const fullName = FullName(friendRequest.name as IName);
 
   return (
-    <div className="lg:w-[300px]">
-      <h2 className="font-semibold text-md text-gray-500 ">FRIEND REQUESTS</h2>
-      <hr className="mt-5" />
-      <div className=" ">
-        <div className="py-2 flex gap-3 items-center justify-center hover:bg-gray-200 rounded transition-opacity duration-300 border-b-2 ">
-          <Avatar
-            size="large"
-            src={friendRequest?.profilePicture}
-            icon={<UserOutlined />}
-          />
-          <div>
-            <h2 className="font-bold text-md">{fullName}</h2>
-            <p className="text-gray-500">
-              {friendRequest.mutualFriends} mutual{" "}
-              {friendRequest.mutualFriends >= 1 ? "friends" : "friend"}
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <button className="p-2 bg-gray-300 rounded-lg hover:bg-sky-500 hover:text-white font-bold transition-colors duration-300 text-2xl">
-              <BsPersonCheck />
-            </button>
-            <button className="p-2 bg-gray-300 rounded-lg hover:bg-sky-500 hover:text-white font-bold transition-colors duration-300 text-2xl">
-              <BsPersonDash />
-            </button>
-          </div>
-        </div>
+    <div className="py-2 flex gap-3 items-center   hover:bg-gray-200 rounded transition-opacity duration-300 border-b-2 ">
+      <Avatar
+        size="large"
+        src={friendRequest?.profilePicture}
+        icon={<UserOutlined />}
+      />
+      <div>
+        <h2 className="font-bold text-md">{fullName}</h2>
+        <p className="text-gray-500">
+          {friendRequest.mutualFriends} mutual{" "}
+          {friendRequest.mutualFriends >= 1 ? "friends" : "friend"}
+        </p>
+      </div>
+      <div className="flex gap-3">
+        <button className="p-2 bg-gray-300 rounded-lg hover:bg-sky-500 hover:text-white font-bold transition-colors duration-300 text-xl">
+          <BsPersonCheck />
+        </button>
+        <button className="p-2 bg-gray-300 rounded-lg hover:bg-sky-500 hover:text-white font-bold transition-colors duration-300 text-xl">
+          <BsPersonDash />
+        </button>
       </div>
     </div>
   );
 };
 
-export default FriendsRequestLabel;
+export default FriendsRequest;
