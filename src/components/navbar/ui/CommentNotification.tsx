@@ -8,20 +8,19 @@ const CommentNotification = (props: { notification: INotification }) => {
   const { notification } = props;
   const fullName = FullName(notification?.user?.name);
   return (
-    <div className="flex justify-between items-center p-2 border-b-2  hover:bg-sky-300 rounded">
+    <div className="flex justify-between items-center p-2    shadow-sm shadow-sky-50  hover:bg-sky-400 rounded">
       <div className="flex items-center gap-2">
         <Avatar
           size="large"
           src={notification?.user.profilePicture}
           icon={<UserOutlined />}
         />
-        <h3 className="text-sm text-gray-500">
-          <span className="text-gray-700 font-bold">{fullName}</span> commented
-          on Your Post
+        <h3 className="text-sm text-gray-700 dark:text-gray-100">
+          <span className=" font-bold">{fullName}</span> commented on Your Post
         </h3>
       </div>
       <div className="ml-2">
-        <BsChatLeftDots className="text-lg" />
+        <BsChatLeftDots className="text-lg dark:text-gray-100" />
       </div>
     </div>
   );

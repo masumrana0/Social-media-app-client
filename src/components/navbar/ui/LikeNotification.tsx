@@ -10,7 +10,7 @@ const LikeNotification = (props: { notification: INotification }) => {
   const { notification } = props;
   const fullName = FullName(notification.user.name);
   return (
-    <div className="flex justify-between items-center p-2 border-b-2  hover:bg-sky-300 rounded">
+    <div className="flex justify-between items-center p-2    shadow-sm shadow-sky-50  hover:bg-sky-400 rounded">
       <div className="flex items-center gap-2">
         <div>
           <Avatar
@@ -19,13 +19,13 @@ const LikeNotification = (props: { notification: INotification }) => {
             icon={<UserOutlined />}
           />
         </div>
-        <h3 className="text-sm text-gray-500">
-          <span className="text-gray-800 font-bold">{fullName}</span>{" "}
+        <h3 className="text-sm text-gray-700 dark:text-gray-100">
+          <span className=" font-bold">{fullName}</span>{" "}
           <span className="">love </span> <span className="  ">Your Post</span>
         </h3>
       </div>
       <div>
-        <BsHeart className="text-lg" />
+        <BsHeart className="text-lg dark:text-gray-100" />
       </div>
     </div>
   );
