@@ -1,5 +1,6 @@
 import React from "react";
 import FriendsRequest from "./labels/FriendsRequestLabel";
+import { UserPlus } from "phosphor-react";
 interface UserData {
   name: {
     firstName: string;
@@ -21,8 +22,10 @@ const FriendsRequests: UserData[] = [
 ];
 const FriendRequestDropdown = () => {
   return (
-    <div className="bg-gray-200 absolute top-10 h-[80vh] left-0 w-full  rounded-md p-3 z-10">
-      <h3 className="font-bold text-2xl text-slate-600">Friend Request</h3>
+    <div className=" h-[80vh]  w-full  rounded-md p-3 z-10">
+      <h3 className="flex  items-center gap-1 font-bold text-lg md:text-2xl mb-5 text-slate-600 dark:text-gray-100">
+        FriendRequests <UserPlus />
+      </h3>
       <div>
         {FriendsRequests.map((friendRequest: UserData, index) => (
           <FriendsRequest key={index} friendRequest={friendRequest} />

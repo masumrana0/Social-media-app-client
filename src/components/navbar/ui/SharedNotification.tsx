@@ -9,7 +9,7 @@ const SharedNotification = (props: { notification: INotification }) => {
   const { notification } = props;
   const fullName = FullName(notification?.user?.name);
   return (
-    <div className="flex justify-between items-center p-2    shadow-sm shadow-sky-50  hover:bg-sky-400 rounded">
+    <div className="flex justify-between items-center p-2    shadow-sm shadow-sky-600  hover:bg-sky-400 rounded">
       <div className="flex items-center gap-2">
         <div>
           <Avatar

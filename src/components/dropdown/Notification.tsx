@@ -6,6 +6,7 @@ import LikeNotification from "../navbar/ui/LikeNotification";
 import { Bell } from "phosphor-react";
 
 const NotificationDropDown = () => {
+  // dummy data
   const notifications: INotification[] = [
     {
       category: "comment",
@@ -151,42 +152,6 @@ const NotificationDropDown = () => {
       },
       time: "",
     },
-    {
-      category: "shared",
-      user: {
-        profilePicture:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-        name: {
-          firstName: "David",
-          lastName: "Kim",
-        },
-      },
-      time: "",
-    },
-    {
-      category: "shared",
-      user: {
-        profilePicture:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-        name: {
-          firstName: "David",
-          lastName: "Kim",
-        },
-      },
-      time: "",
-    },
-    {
-      category: "shared",
-      user: {
-        profilePicture:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-        name: {
-          firstName: "David",
-          lastName: "Kim",
-        },
-      },
-      time: "",
-    },
   ];
 
   return (
@@ -195,7 +160,7 @@ const NotificationDropDown = () => {
         Notification
         <Bell />
       </h3>
-      <div  className="flex flex-col gap-2 ">
+      <div className="flex flex-col gap-2 ">
         {/* Render JSX elements inside map function */}
         {notifications.map((notification: INotification, index: number) => {
           switch (notification.category) {

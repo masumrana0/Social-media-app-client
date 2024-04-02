@@ -19,25 +19,27 @@ const FriendsRequest = ({ friendRequest }: { friendRequest: UserData }) => {
   const fullName = FullName(friendRequest.name as IName);
 
   return (
-    <div className="py-2 flex gap-3 items-center   hover:bg-gray-200 rounded transition-opacity duration-300 border-b-2 ">
-      <Avatar
-        size="large"
-        src={friendRequest?.profilePicture}
-        icon={<UserOutlined />}
-      />
-      <div>
-        <h2 className="font-bold text-md">{fullName}</h2>
-        <p className="text-gray-500">
-          {friendRequest.mutualFriends} mutual{" "}
-          {friendRequest.mutualFriends >= 1 ? "friends" : "friend"}
-        </p>
+    <div className="py-2 flex gap-3 items-center justify-around  rounded transition-opacity duration-300  shadow-sm shadow-sky-600 sm: ">
+      <div className="flex items-center gap-2">
+        <Avatar
+          size="large"
+          src={friendRequest?.profilePicture}
+          icon={<UserOutlined />}
+        />
+        <div className="dark:text-gray-100 text-gray-700">
+          <h2 className="font-bold text-md ">{fullName}</h2>
+          <p className="text-[10px] md:text-sm ">
+            {friendRequest.mutualFriends} mutual{" "}
+            {friendRequest.mutualFriends >= 1 ? "friends" : "friend"}
+          </p>
+        </div>
       </div>
-      <div className="flex gap-3">
-        <button className="p-2 bg-gray-300 rounded-lg hover:bg-sky-500 hover:text-white font-bold transition-colors duration-300 text-xl">
-          <BsPersonCheck />
+      <div className="flex gap-2">
+        <button className="p-2  rounded-lg  bg-sky-500 text-white hover:text-white font-semibold transition-colors duration-300 text-sm">
+          Confirm
         </button>
-        <button className="p-2 bg-gray-300 rounded-lg hover:bg-sky-500 hover:text-white font-bold transition-colors duration-300 text-xl">
-          <BsPersonDash />
+        <button className="p-2 bg-slate-500  rounded-lg hover:bg-slate-700  text-white font-semibold transition-colors duration-300 text-sm">
+          Cancel
         </button>
       </div>
     </div>

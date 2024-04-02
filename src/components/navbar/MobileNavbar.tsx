@@ -24,6 +24,7 @@ import DarkmodeToggle from "./ui/DarkmodeToogle";
 import Navigation from "./ui/Navigation";
 import NotificationDropDown from "../dropdown/Notification";
 import FriendRequestDropdown from "../dropdown/FriendRequest";
+import MobileToogleDropdown from "../dropdown/MobileToogleDropdown";
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +70,7 @@ const MobileNavbar = () => {
   return (
     <div className="flex relative flex-col   px-1 gap-2  ">
       <div
-        className={`flex justify-between items-center ${isHiddenNavar && "hidden"}`}
+        className={`flex justify-between items-center  p-1 ${isHiddenNavar && "hidden"}`}
       >
         {/* logo part   */}
         <div className={`${isFocused && "hidden"} flex  gap-2 items-center `}>
@@ -151,39 +152,9 @@ const MobileNavbar = () => {
             </div>
           </div>
 
-          <div>
+          <div className="">
             {/* Dropdown Content */}
-            {isOpen && (
-              <div className="bg-gray-200 absolute top-10 h-[94vh] left-0 w-full rounded-md p-3 z-10">
-                <div className="flex flex-col">
-                  <div className="hover:bg-slate-100 p-2 rounded-md cursor-pointer flex justify-between items-center gap-2">
-                    <p className="text-sm">Theme</p>
-                    <DarkmodeToggle />
-                  </div>
-                  <Divider className="my-2" />
-                  {[
-                    { Icon: CgProfile, text: "Profile", href: "/profile" },
-                    { Icon: IoSettings, text: "Setting", href: "/setting" },
-                    { Icon: IoMdHelpBuoy, text: "Help", href: "/help" },
-                    { Icon: RiLogoutCircleLine, text: "Logout" },
-                  ].map(({ Icon, text, href }, index) => (
-                    <div
-                      key={index}
-                      className="flex   p-2 rounded-md cursor-pointer items-center gap-2 border-b-2 border-black dark:border-white hover:bg-sky-300  "
-                    >
-                      <Icon className={index === 0 ? "" : "text-xl"} />
-                      {href ? (
-                        <Link href={href} className="text-sm">
-                          {text}
-                        </Link>
-                      ) : (
-                        <p className="text-sm">{text}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {isOpen && <MobileToogleDropdown />}
           </div>
         </div>
         <hr />
@@ -192,9 +163,9 @@ const MobileNavbar = () => {
       {/*bottom navigation bar */}
 
       <div
-        className={`flex justify-center items-center ${isFocused && "hidden"}`}
+        className={`flex justify-center items-center border-b-2 border-sky-500 ${isFocused && "hidden"}`}
       >
-        <nav className="flex items-center gap-10 md:gap-3  ">
+        <nav className="flex items-center gap-10 md:gap-3 pb-3 ">
           <button
             onClick={closeAll}
             className="border border-sky-400  bg-sky-100 hover:bg-sky-200 transition-colors duration-300  p-2 rounded-full "
