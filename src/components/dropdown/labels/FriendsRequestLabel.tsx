@@ -19,7 +19,7 @@ const FriendsRequest = ({ friendRequest }: { friendRequest: UserData }) => {
   const fullName = FullName(friendRequest.name as IName);
 
   return (
-    <div className="py-2 flex gap-3 items-center justify-around  rounded transition-opacity duration-300  shadow-sm shadow-sky-600 sm: ">
+    <div className="py-2 px-2 flex gap-3 items-center justify-around  rounded transition-opacity duration-300  shadow-sm shadow-sky-600 sm: ">
       <div className="flex items-center gap-2">
         <Avatar
           size="large"

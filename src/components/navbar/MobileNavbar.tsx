@@ -133,6 +133,7 @@ const MobileNavbar = () => {
                 </button>
               )}
             </div>
+            {/* toogle bar */}
             <div>
               {isOpen ? (
                 <button
@@ -151,8 +152,8 @@ const MobileNavbar = () => {
               )}
             </div>
           </div>
-
-          <div className="">
+          {/* toogle dropdown */}
+          <div>
             {/* Dropdown Content */}
             {isOpen && <MobileToogleDropdown />}
           </div>

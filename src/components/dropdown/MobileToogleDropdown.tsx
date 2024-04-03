@@ -10,7 +10,7 @@ import DarkmodeToggle from "../navbar/ui/DarkmodeToogle";
 
 const MobileToogleDropdown = () => {
   return (
-    <div className="bg-gray-200 text-slate-900 dark:text-gray-100 dark:bg-slate-800 absolute top-12 h-[94vh] left-0 w-full rounded-md p-3 z-10">
+    <div className="bg-gray-200 text-slate-900 dark:text-gray-100 dark:bg-slate-800 absolute top-12 h-[94vh]  left-0 w-full rounded-md p-3 z-10">
       <div className="flex flex-col">
         <div className="hover:bg-sky-500  hover:text-white p-2 rounded-md cursor-pointer flex justify-between items-center gap-2">
           <p className="text-md  font-bold">Theme</p>
