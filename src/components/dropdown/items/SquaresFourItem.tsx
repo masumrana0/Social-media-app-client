@@ -7,32 +7,9 @@ import { IoSettings } from "react-icons/io5";
 import { IoMdHelpBuoy } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
 
-const ThemeLabel = () => {
-  const handleSelectClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    // Stop the click event propagation to prevent the dropdown from closing
-    e.stopPropagation();
-  };
-  return (
-    <div
-      onClick={handleSelectClick}
-      className="hover:bg-sky-500 hover:text-white p-2 rounded-md cursor-pointer flex justify-between items-center gap-2"
-    >
-      <p className="text-md font-bold">Theme</p>
-      <DarkmodeToggle />
-    </div>
-  );
-};
-
-export default ThemeLabel;
-
 export const SquaresFourItems: MenuProps["items"] = [
   // Theme item
-  {
-    key: "theme",
-    label: <ThemeLabel />,
-  },
+  {},
   // Profile item
   { Icon: CgProfile, text: "Profile", href: "/profile" },
   // Setting item

@@ -2,10 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-.dropdown {
-  position: static;
-  left: 0 !important;
-  margin: auto !important;
-  right: 0 !important;
-  width: 100%;
-}
+ 
