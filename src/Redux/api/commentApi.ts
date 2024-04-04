@@ -1,10 +1,10 @@
-import { IComment } from "@/types/newsfeed";
+// import { IComment } from "@/types/newsfeed";
 import { baseApi } from "./baseApi";
 
 const commentApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     submitComment: build.mutation({
-      query: (comment: IComment) => ({
+      query: (comment:any) => ({
         url: "/comment",
         method: "POST",
         data: comment,

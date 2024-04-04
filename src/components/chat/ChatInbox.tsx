@@ -27,15 +27,15 @@ const ChatInbox = () => {
     messages = data;
   }
 
-  useEffect(() => {
-    socket?.on("new_message", (new_message) => {
-      setSocketMessages([...socketMessages, new_message]);
-      const sound = new Audio(notification_sound);
-      sound.play();
-    });
+  // useEffect(() => {
+  //   socket?.on("new_message", (new_message) => {
+  //     // setSocketMessages([...socketMessages, new_message]);
+  //     const sound = new Audio(notification_sound);
+  //     sound.play();
+  //   });
 
-    return () => socket?.off("new_message");
-  }, [socket, socketMessages, setSocketMessages]);
+  //   return () => socket?.off("new_message");
+  // }, [socket, socketMessages, setSocketMessages]);
 
   const participantid = getParticipantData(conversation as IConversation);
 

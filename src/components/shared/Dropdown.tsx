@@ -1,33 +1,39 @@
 "use client";
-import { Bell, Square } from "phosphor-react";
-import React, { useEffect, useRef, useState } from "react";
+import cn from "@/lib/cn";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 interface DropdownOption {
   key: string | number;
-  label: string;
+  label: string | any;
 }
 
 interface DropdownProps {
+  children: ReactNode;
   width?: string;
   height?: string;
-  placement?:
-    | "top"
-    | "bottom"
-    | "topLeft"
-    | "topRight"
-    | "bottomLeft"
-    | "bottomRight";
+  placement?: "left" | "right";
+  dropdownOverlay?: string;
+  optionStyle?: string;
+  Headline?: string | any;
+  optionsContainerStyle?: string;
   options: DropdownOption[];
+  arrow?: boolean;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
+  children,
   options,
-  width = "w-20",
-  height = "h-56",
-  placement = "topLeft",
+  arrow = false,
+  placement = "left",
+  dropdownOverlay,
+  optionStyle,
+  Headline,
+  optionsContainerStyle,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // closing functionalites
   const closeDropdown = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
@@ -36,6 +42,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       setIsOpen(false);
     }
   };
+
   useEffect(() => {
     document.addEventListener("mousedown", closeDropdown);
 
@@ -44,68 +51,66 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
   }, []);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
+  // dropdown positioning functionalites
   const getDropdownMenuClasses = () => {
     switch (placement) {
-      case "top":
-        return "top-10";
-      case "topLeft":
-        return " right-2";
-      case "topRight":
-        return "top-full left-0";
-      case "bottom":
-        return "top-14";
-      case "bottomLeft":
-        return "top-14 right-0";
-      case "bottomRight":
-        return "top-14 left-0";
+      case "left":
+        return `top-10 right-1 `;
+      case "right":
+        return `top-10 left-1`;
       default:
-        return "top-14";
+        return `top-10 right-1 `;
     }
   };
 
   return (
-    <div className={`relative inline-block text-left  `} ref={dropdownRef}>
+    <div className={`relative inline-block text-left`} ref={dropdownRef}>
+      {/* dropdown button */}
       <div>
         <button
-          onBlur={() => setIsOpen(false)}
+          onClick={() => setIsOpen(!isOpen)}
           onMouseEnter={() => setIsOpen(true)}
           type="button"
-          className="inline-flex justify-center h-12 w-12  rounded-full border border-gray-300 shadow-sm  p-2 text-2xl  "
-          id="options-menu"
         >
-          <Bell />
-          <div
-            className={`absolute top-1/2 right-3 transform -translate-y-1/2 ${isOpen ? "rotate-180" : ""}`}
-          >
-            <div className="w-0 h-0 border-t-4 border-l-4 border-r-4 border-transparent"></div>
-          </div>
+          {children}
         </button>
       </div>
 
+      {/* dropdown content */}
       {isOpen && (
         <div>
           <div
-            className={`absolute  ${width} ${height}   mt-3 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${getDropdownMenuClasses()} `}
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="options-menu"
+            className={cn(
+              `absolute  w-[20rem] h-auto px-2 py-1 mt-3 rounded-md shadow-lg bg-slate-50 ring-1 ring-black ring-opacity-5   ${getDropdownMenuClasses()} ${dropdownOverlay}`
+            )}
           >
-            <div className="w-3 h-3 border-t border-l bg-white transform rotate-45 absolute top-[-8px]  right-3 z-0"></div>
-            <div className="p-2 z-10" role="none">
-              {/* Dropdown items */}
+            {arrow && (
+              <div
+                className={cn(
+                  `w-3 h-3 border-t border-l  bg-slate-50   transform rotate-45 absolute top-[-7px]  bg-inherit ${
+                    placement === "right" ? "left-3" : "right-3"
+                  } z-0`
+                )}
+              ></div>
+            )}
+            {/* optionsContainer */}
+
+            {Headline && <div>{Headline} </div>}
+            <div
+              className={cn(
+                `flex flex-col gap-2 p-2 z-10 ${optionsContainerStyle}`
+              )}
+              role="none"
+            >
               {options.map((option) => (
-                <a
+                <div
                   key={option.key}
-                  href={`#${option.key}`}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
+                  className={cn(
+                    `block   text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${optionStyle}`
+                  )}
                 >
                   {option.label}
-                </a>
+                </div>
               ))}
             </div>
           </div>

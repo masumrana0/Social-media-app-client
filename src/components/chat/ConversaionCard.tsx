@@ -30,7 +30,7 @@ const ConversaionCard = ({ conversation }: { conversation: IConversation }) => {
 
   return (
     <div
-      onClick={() => dispatch(setConversation(conversation as IConversation))}
+      // onClick={() => dispatch(setConversation(conversation as IConversation))}
       className="flex  cursor-pointer  gap-2 border rounded-lg w-full shadow-md bg-gray-100 mb-2 "
     >
       <div className="w-[60px] h-[60px] relative rounded-lg overflow-hidden   ">

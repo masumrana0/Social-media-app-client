@@ -6,13 +6,13 @@
  *
  */
 
-import { IReaction } from "@/types/newsfeed";
+// import { IReaction } from "@/types/newsfeed";
 import { baseApi } from "./baseApi";
 
 const commentApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     submitReaction: build.mutation({
-      query: (reaction: IReaction) => ({
+      query: (reaction: any) => ({
         url: "/reaction",
         method: "POST",
         data: reaction,

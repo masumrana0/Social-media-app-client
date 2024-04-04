@@ -2,6 +2,7 @@
 import React from "react";
 import SearchBar from "./ui/SearchBar";
 import Navigation from "./ui/Navigation";
+import DarkmodeToggle from "./ui/DarkmodeToogle";
 
 const DesktopNavbar = () => {
   return (
@@ -13,6 +14,9 @@ const DesktopNavbar = () => {
           {" "}
           <SearchBar />
         </div>
+      </div>
+      <div className="hidden">
+        <DarkmodeToggle />
       </div>
       {/* right section */}
       <div>

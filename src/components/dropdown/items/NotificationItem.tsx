@@ -1,4 +1,3 @@
-import type { MenuProps } from "antd";
 import { INotification } from "@/types/navbar";
 import CommentNotification from "@/components/navbar/ui/CommentNotification";
 import SharedNotification from "@/components/navbar/ui/SharedNotification";
@@ -73,7 +72,7 @@ const viewAllButton = (
   </button>
 );
 
-export const notificationItems: MenuProps["items"] = notifications
+export const notificationOptions = notifications
   .map((notification: INotification, index: number) => {
     let labelComponent;
 

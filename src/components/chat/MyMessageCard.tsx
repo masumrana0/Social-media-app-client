@@ -11,7 +11,7 @@ const MyMessageCard = ({ message }: { message: IMessage }) => {
   useEffect(() => {
     // Check if the current message's sender ID is different from the last one
     if (lastSenderId !== message?.sender) {
-      setLastSenderId(message?.sender);
+      // setLastSenderId(message?.sender);
       setShowAvatar(true);
     } else {
       setShowAvatar(false);

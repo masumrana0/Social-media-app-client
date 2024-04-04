@@ -1,10 +1,9 @@
-import { IStory } from "@/types/newsfeed";
 import { baseApi } from "./baseApi";
 
 const storyApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createStory: build.mutation({
-      query: (story: IStory) => ({
+      query: (story: any) => ({
         url: "/story",
         method: "POST",
         data: story,
