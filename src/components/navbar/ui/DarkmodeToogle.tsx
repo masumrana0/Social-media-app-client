@@ -1,3 +1,15 @@
+// import { DarkmodeOptions } from "@/components/dropdownOptions/DarkModeOptions";
+// import Dropdown from "@/components/shared/Dropdown";
+// import { BsFillMoonFill, BsSun } from "react-icons/bs";
+// import { FaDesktop } from "react-icons/fa";
+// import React, { useState } from "react";
+// import { useAppSelector } from "@/Redux/hooks";
+
+// const DarkmodeToogle = () => {
+//   const theme = useAppSelector((state) => state.themeSlice.theme);
+
+// export default DarkmodeToogle;
+
 "use client";
 import cn from "@/lib/cn";
 import React, { useEffect, useRef, useState } from "react";
