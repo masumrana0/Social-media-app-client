@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type IName = {
   firstName: string;
   lastName?: string;
@@ -14,4 +16,9 @@ export interface IDecodedToken {
   userName: string;
   role: "normal_user" | "admin";
   email: string;
+}
+
+export interface IDropdownOption {
+  key: string;
+  label: ReactNode | string | any;
 }

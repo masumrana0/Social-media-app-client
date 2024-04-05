@@ -1,11 +1,7 @@
 "use client";
 import cn from "@/lib/cn";
+import { IDropdownOption } from "@/types/shared";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
-
-interface DropdownOption {
-  key: string | number;
-  label: string | any;
-}
 
 interface DropdownProps {
   children: ReactNode;
@@ -16,7 +12,7 @@ interface DropdownProps {
   optionStyle?: string;
   Headline?: string | any;
   optionsContainerStyle?: string;
-  options: DropdownOption[];
+  options: IDropdownOption[];
   arrow?: boolean;
 }
 
@@ -102,7 +98,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               )}
               role="none"
             >
-              {options.map((option) => (
+              {options?.map((option) => (
                 <div
                   key={option.key}
                   className={cn(
