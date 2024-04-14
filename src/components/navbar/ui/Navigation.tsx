@@ -7,24 +7,16 @@ import {
   notificationOptions,
 } from "@/components/dropdownOptions/Notification";
 import { SquaresFourOptions } from "@/components/dropdownOptions/SquireOptions";
-
-import { BsFillMoonFill, BsSun } from "react-icons/bs";
-import { FaDesktop } from "react-icons/fa";
-import DarkmodeToogle from "./DarkmodeToogle";
-import { useAppSelector } from "@/Redux/hooks";
-import { DarkmodeOptions } from "@/components/dropdownOptions/DarkModeOptions";
-import TestDarkMode from "./TestDarkMode";
+import DarkModeToogle from "./DarkmodeToogle";
 
 const Navigation = () => {
   const [navbarState, setNavbarState] = useState(1);
-  const theme = useAppSelector((state) => state.themeSlice.theme);
 
   return (
     <div>
       <div className="flex items-center gap-4">
         <div>
-          {/* <DarkmodeToogle /> */}
-          <TestDarkMode />
+          <DarkModeToogle />
         </div>
 
         <nav className="flex items-center gap-10 md:gap-3  ">

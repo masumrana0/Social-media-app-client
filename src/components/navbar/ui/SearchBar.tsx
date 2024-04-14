@@ -8,21 +8,23 @@ function SearchBar() {
   return (
     <div className="relative">
       <div
-        className={`lg:w-[25rem] md:w-[15rem] flex    items-center border bg-white ${isFocused ? "rounded-t-md" : "rounded-full"}  p-2`}
+        className={`lg:w-[25rem] md:w-[15rem] flex    items-center border bg-gray-100 dark:bg-slate-600 ${isFocused ? "rounded-t-md" : "rounded-full"}  p-2`}
       >
-        <span>{isFocused ? null : <MagnifyingGlass size={24} />}</span>
+        <span>
+          {isFocused ? null : (
+            <MagnifyingGlass
+              className="text-gray-800 dark:text-gray-50"
+              size={24}
+            />
+          )}
+        </span>
         <input
           type="text"
           placeholder="Search..."
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="outline-none  "
+          className="outline-none bg-inherit  "
         />
-        {/* {isFocused ? (
-          <button className="bg-gray-200 flex justify-end p-1 rounded-full font-bold">
-            <X size={20} />
-          </button>
-        ) : null} */}
       </div>
 
       <div

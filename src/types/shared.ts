@@ -9,6 +9,7 @@ export type IUserCommonData = {
   userId?: string;
   name: IName;
   profilePicture?: string;
+  mutualFriends?: string;
 };
 
 export interface IDecodedToken {
