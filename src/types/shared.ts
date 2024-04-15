@@ -23,3 +23,10 @@ export interface IDropdownOption {
   key: string;
   label: ReactNode | string | any;
 }
+
+export type ITheme = "dark" | "light" | "system";
+
+export interface IDarkModeOption {
+  icon: JSX.Element;
+  theme: ITheme;
+}
