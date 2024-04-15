@@ -9,7 +9,6 @@ import { FaDesktop } from "react-icons/fa";
 
 const DarkModeToogle = () => {
   const theme = useAppSelector((state) => state.themeSlice.theme);
-  console.log("i am from toogle bar", theme);
   // access  to system theme mode
   const darkQuery = window.matchMedia("(prefers-color-scheme:dark)");
   // access element
@@ -56,8 +55,8 @@ const DarkModeToogle = () => {
   return (
     <div>
       <Dropdown
-        optionsContainerStyle="gap-0"
-        optionStyle={`hover:bg-sky-300 px-2 py-1 `}
+        optionsContainerStyle="dark:bg-sky-100 rounded   gap-0"
+        optionStyle={`hover:bg-sky-300 hover:text-gray-100 px-2 py-1 flex justify-between `}
         dropdownOverlay="w-32 p-0"
         options={DarkmodeOptions}
       >

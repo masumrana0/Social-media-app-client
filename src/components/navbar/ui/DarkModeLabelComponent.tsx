@@ -13,7 +13,9 @@ const DarkmodeLabel = ({ icon, theme: Theme }: IDarkModeOption) => {
   return (
     <button
       onClick={() => dispatch(setTheme(Theme))}
-      className={`flex items-center justify-between gap-2 text-lg font-semibold capitalize ${theme === Theme && "text-sky-400"}`}
+      className={`flex items-center justify-between gap-2 text-lg font-semibold capitalize   ${
+        theme === Theme && "text-sky-400 hover:text-gray-50 "
+      } `}
     >
       {Theme}
       <span>{icon}</span>
