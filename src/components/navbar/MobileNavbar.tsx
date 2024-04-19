@@ -22,9 +22,10 @@ import {
 // components
 import DarkmodeToggle from "./ui/DarkmodeToogle";
 import Navigation from "./ui/Navigation";
-import NotificationDropDown from "../dropdown/Notification";
-import FriendRequestDropdown from "../dropdown/FriendRequest";
-import MobileToogleDropdown from "../dropdown/MobileToogleDropdown";
+import MobileToogleDropdown from "./ui/MobileToogleDropdown";
+// import NotificationDropDown from "../dropdown/Notification";
+// import FriendRequestDropdown from "../dropdown/FriendRequest";
+// import MobileToogleDropdown from "../dropdown/MobileToogleDropdown";
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);

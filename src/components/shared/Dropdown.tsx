@@ -65,7 +65,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       <div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          onMouseEnter={() => setIsOpen(true)}
+          // onMouseEnter={() => setIsOpen(true)}
           type="button"
         >
           {children}

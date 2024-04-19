@@ -56,7 +56,7 @@ const DarkModeToogle = () => {
     <div>
       <Dropdown
         optionsContainerStyle="dark:bg-sky-100 rounded   gap-0"
-        optionStyle={`hover:bg-sky-300 hover:text-gray-100 px-2 py-1 flex justify-between `}
+        optionStyle={`hover:bg-sky-300 hover:text-gray-100 px-2 py-1 flex justify-between text-sm lg:text-lg `}
         dropdownOverlay="w-32 p-0"
         options={DarkmodeOptions}
       >

@@ -69,13 +69,13 @@ const notifications: INotification[] = [
   },
 ];
 
- export const notificationHeadline = (
-   <h3 className="flex items-center gap-1 font-bold text-xl md:text-2xl p-1 mb-1 text-slate-600 dark:text-gray-100">
-     {" "}
-     Notification
-     <Bell />
-   </h3>
- );
+export const notificationHeadline = (
+  <h3 className="flex items-center gap-1 font-bold text-xl md:text-2xl p-1 mb-1 text-slate-600 dark:text-gray-100">
+    {" "}
+    Notification
+    <Bell />
+  </h3>
+);
 
 const viewAllButton = (
   <button className="w-full mt-4 py-1  bg-gray-300 text-center rounded font-semibold text-gray-600 hover:bg-sky-500 hover:text-white transition-colors duration-300">

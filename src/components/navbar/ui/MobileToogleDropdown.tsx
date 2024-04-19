@@ -6,15 +6,15 @@ import { CgProfile } from "react-icons/cg";
 import { IoMdHelpBuoy } from "react-icons/io";
 import { IoSettings } from "react-icons/io5";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import DarkmodeToggle from "../navbar/ui/DarkmodeToogle";
+import DarkModeToogle from "./DarkmodeToogle";
 
 const MobileToogleDropdown = () => {
   return (
-    <div className="bg-gray-200 text-slate-900 dark:text-gray-100 dark:bg-slate-800 absolute top-12 h-[94vh]  left-0 w-full rounded-md p-3 z-10">
+    <div className="bg-sky-100 text-slate-900 dark:text-gray-100 dark:bg-slate-800 absolute top-12 h-[94vh]  left-0 w-full rounded-md p-3 z-10">
       <div className="flex flex-col">
         <div className="hover:bg-sky-500  hover:text-white p-2 rounded-md cursor-pointer flex justify-between items-center gap-2">
           <p className="text-md  font-bold">Theme</p>
-          <DarkmodeToggle />
+          <DarkModeToogle />
         </div>
         <Divider className="my-2" />
         {[
